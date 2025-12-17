@@ -3,35 +3,35 @@
     min-height: 30vh;
     border-radius: 8px;
     padding: 24px 24px 0px 24px;
+}
 
-    .extratoHeader {
-        display: flex;
-        margin-bottom: 10px;
-    }
+.extratoHeader {
+    display: flex;
+    margin-bottom: 10px;
+}
 
-    .extratoLista {
-        height: 80vh;
-        overflow-y: auto;
+.extratoLista {
+    height: 80vh;
+    overflow-y: auto;
+    padding-right: 12px; /* 👈 espaçamento da barra */
+}
 
-        .extratoMes {
-            h5 {
-                margin-top: 30px;
-            }
+.extratoMes h5 {
+    margin-top: 30px;
+}
 
-            .extratoDia {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 15px 0px;
-                .extratoDiaHeader {
-                    display: grid;
-                    gap: 5px;
+.extratoDia {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0px;
+}
 
-                    h5 {
-                        margin: 0px;
-                    }
-                }
-            }
-        }
-    }
+.extratoDiaHeader {
+    display: grid;
+    gap: 5px;
+}
+
+.extratoDiaHeader h5 {
+    margin: 0px;
 }
