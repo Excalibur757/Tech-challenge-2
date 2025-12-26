@@ -7,8 +7,9 @@ import { spacing } from "@/styles/theme/spacing";
 import { radii } from "@/styles/theme/radii";
 
 const defaultLinks: iSidebarLink[] = [
-  { href: "#", label: "Início" },
+  { href: "/", label: "Início" },
   { href: "#", label: "Transferências" },
+  { href: "/extrato", label: "Extrato" },
   { href: "#", label: "Investimentos" },
   { href: "#", label: "Outros serviços" },
 ];
@@ -92,7 +93,9 @@ export default function SidebarComponente(props: iSidebar) {
                   href={link.href}
                   style={dynamicLinkStyle}
                   onClick={(e) => {
-                    e.preventDefault();
+                    if (link.href === "#") {
+                      e.preventDefault();
+                    }
                     setActiveLabel(link.label);
                   }}
                 >

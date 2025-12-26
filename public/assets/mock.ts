@@ -118,10 +118,6 @@ export const listaExtratos = [
   
   export const opcoesTransacao = [
     {
-      value: "",
-      label: "Selecione um tipo de transação",
-    },
-    {
       value: "deposito",
       label: "Depósito",
     },
