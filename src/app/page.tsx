@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState, useEffect } from "react";
 import styles from "./page.module.css";
 import InputComponente from "@/components/Input/Input";
 import SelectComponente from "@/components/Select/Select";
@@ -14,6 +14,7 @@ import { adicionarTransacao } from "@/utils/transacao";
 import { radii } from "@/styles/theme/radii";
 import { palette } from "@/styles/theme/colors";
 import { fontSizes } from "@/styles/theme/typography";
+import Grafico from "@/components/Grafico/Grafico";
 import Alerta from "@/components/Alerta/Alerta";
 
 export default function Home() {
@@ -25,9 +26,23 @@ export default function Home() {
   const userName = "Joana da Silva Oliveira";
   const firstName = userName.split(' ')[0];
 
-  const valor = 1250.50;
+  const [saldo, setSaldo] = useState<number>(0);
 
   const [extratos, setExtratos] = useState(listaExtratos);
+
+  useEffect(() => {
+    let total = 1250.50;
+    extratos.forEach(mes => {
+      mes.extratos.forEach(ext => {
+        if (['deposito', 'estorno'].includes(ext.tipo)) {
+          total += ext.valor;
+        } else if (['saque', 'pagamento_boleto', 'recarga_celular'].includes(ext.tipo)) {
+          total -= ext.valor;
+        }
+      });
+    });
+    setSaldo(total);
+  }, [extratos]);
 
   const handleTransactionSubmit = (novaTransacao: FormularioType) => {
     const novosExtratos = adicionarTransacao(extratos, novaTransacao);
@@ -73,8 +88,10 @@ export default function Home() {
             height="40%"
             key={firstName}
             firstName={firstName}
-            valor={valor}
+            valor={saldo}
           />
+
+          <Grafico extratos={extratos} />
 
           <div style={{ flex: 1, minHeight: "fit-content", borderRadius: radii.sm, backgroundColor: palette.cinza300 }} className={styles.page}>
             
@@ -112,7 +129,7 @@ export default function Home() {
               label={"Adicionar nova transação"} 
               onClick={submeterTransacao}   
               backgroundColor={palette.azul700}          
-              disabled={!valor || valor <= 0 || !descricao || !valorSelect}
+              disabled={!valorInput || valorInput <= 0 || !descricao || !valorSelect}
             />
           </div>
         </div>
