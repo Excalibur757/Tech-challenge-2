@@ -54,7 +54,7 @@ export default function ExtratoContainer({ extratos, setExtratos }: ExtratoConta
     };
 
     return (
-        <div className={styles.extratoContainer} style={{backgroundColor: palette.branco}}>
+        <div className={styles.extratoContainer} style={{backgroundColor: palette.branco, color: '#004d61'}}>
             {mostrarAlerta && (
                 <Alerta
                     tipo="aviso"

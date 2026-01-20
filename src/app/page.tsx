@@ -85,7 +85,7 @@ export default function Home() {
           )}
           
           <SaldoContainer
-            height="40%"
+            height="20%"
             key={firstName}
             firstName={firstName}
             valor={saldo}
