@@ -1,5 +1,8 @@
 import { ExtratoItemType, FormularioType } from "@/types/iFormulario";
 import dayjs from "dayjs";
+import 'dayjs/locale/pt-br';
+
+dayjs.locale('pt-br');
 
 export type ExtratoMensalType = {
   mes: string;
@@ -10,8 +13,8 @@ export const adicionarTransacao = (
   extratos: ExtratoMensalType,
   novaTransacao: FormularioType
 ): ExtratoMensalType => {
-  const mesAtual = dayjs().format("MMMM").toLowerCase();
-  const mesEncontrado = extratos.find((e) => e.mes.toLowerCase() === mesAtual);
+  const mesAtual = dayjs().format("MMMM YYYY");
+  const mesEncontrado = extratos.find((e) => e.mes === mesAtual);
 
   const novoId = Date.now();
 
@@ -24,13 +27,13 @@ export const adicionarTransacao = (
 
   if (mesEncontrado) {
     return extratos.map((e) =>
-      e.mes.toLowerCase() === mesAtual
+      e.mes === mesAtual
         ? { ...e, extratos: [transacaoCompleta, ...e.extratos] }
         : e
     );
   } else {
     const novoGrupoMes = {
-      mes: mesAtual.charAt(0).toUpperCase() + mesAtual.slice(1),
+      mes: mesAtual,
       extratos: [transacaoCompleta],
     };
     return [novoGrupoMes, ...extratos];

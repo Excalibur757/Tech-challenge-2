@@ -2,7 +2,7 @@
 
 import styles from './ExtratoContainer.module.css'
 import { Pen, Trash } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import dayjs from 'dayjs'
 import Botao from '../Botao/Botao'
 import { editarTransacao, ExtratoMensalType, removerTransacao } from '@/utils/transacao'
@@ -22,48 +22,6 @@ export default function ExtratoContainer({ extratos, setExtratos }: ExtratoConta
     const [mostrarAlertaDelete, setMostrarAlertaDelete] = useState<boolean>(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedItem, setSelectedItem] = useState<ExtratoItemType | null>(null);
-
-    // quantos meses exibir inicialmente
-    const [visibleMonths, setVisibleMonths] = useState(1);
-
-    // sentinel para o intersection observer
-    const sentinelRef = useRef<HTMLDivElement | null>(null);
-    const listRef = useRef<HTMLDivElement | null>(null);
-
-    // evita múltiplos disparos muito rápidos
-    const loadingRef = useRef(false);
-
-    useEffect(() => {
-        if (!sentinelRef.current || visibleMonths >= extratos.length) return;
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-                const entry = entries[0];
-                if (entry.isIntersecting && !loadingRef.current) {
-                    loadingRef.current = true;
-                    // Debounce pequeno
-                    setTimeout(() => {
-                        setVisibleMonths(prev => {
-                            const next = Math.min(prev + 1, extratos.length);
-                            return next;
-                        });
-                        loadingRef.current = false;
-                    }, 200);
-                }
-            },
-            {
-                root: listRef.current,      // OBSERVE dentro do container rolável
-                rootMargin: '150px',       // começa a carregar antes de chegar no fim
-                threshold: 0.1,
-            }
-        );
-
-        observer.observe(sentinelRef.current);
-
-        return () => {
-            observer.disconnect();
-        };
-    }, [extratos.length, visibleMonths]);
 
     const showModal = (item: ExtratoItemType) => {
         setIsModalOpen(true);
@@ -96,7 +54,7 @@ export default function ExtratoContainer({ extratos, setExtratos }: ExtratoConta
     };
 
     return (
-        <div className={styles.extratoContainer} style={{backgroundColor: palette.branco}}>
+        <div className={styles.extratoContainer} style={{backgroundColor: palette.branco, color: '#004d61'}}>
             {mostrarAlerta && (
                 <Alerta
                     tipo="aviso"
@@ -115,9 +73,8 @@ export default function ExtratoContainer({ extratos, setExtratos }: ExtratoConta
                 </h1>
             </div>
 
-            {/* atribui ref no container rolável */}
-            <div className={styles.extratoLista} ref={listRef}>
-                {extratos.slice(0, visibleMonths).map((extrato, index) => (
+            <div className={styles.extratoLista}>
+                {extratos.map((extrato, index) => (
                     <div key={index}>
                         <div className={styles.extratoMes}>
                             <h5 style={{fontWeight: fontWeights.medium, fontSize: fontSizes.small, color: palette.verde500}}>{extrato.mes}</h5>
@@ -158,15 +115,6 @@ export default function ExtratoContainer({ extratos, setExtratos }: ExtratoConta
                     </div>
                 ))}
 
-                {/* sentinel: observer observa isso e carrega mais quando ele aparece */}
-                <div ref={sentinelRef} style={{ height: 1, width: '100%' }} />
-
-                {/* opcional: se quiser mostrar que acabou */}
-                {visibleMonths >= extratos.length && (
-                    <div style={{ textAlign: 'center', padding: 12, color: '#666', fontSize: 14 }}>
-                        Fim dos extratos
-                    </div>
-                )}
             </div>
 
             <ModalEditarTransacao isOpen={isModalOpen} onClose={handleCancel} extratoData={selectedItem} onFinish={handleEditFinish} />
