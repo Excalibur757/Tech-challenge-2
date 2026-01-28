@@ -7,5 +7,6 @@ export interface IBotao extends iEstilos {
     onClick?: () => void;
     disabled?: boolean;
     className?: string;
+    title?: string;
   }
   

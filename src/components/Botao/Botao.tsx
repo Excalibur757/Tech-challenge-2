@@ -12,6 +12,7 @@ export default function Botao({
     onClick,
     disabled,
     className,
+    title,
     padding,
     margin,
     width,
@@ -42,6 +43,7 @@ export default function Botao({
             onClick={onClick}
             disabled={disabled}
             className={className}
+            title={title}
             style={buttonStyle}
         >
             {prefixo}
