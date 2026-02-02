@@ -95,6 +95,7 @@ export default function ExtratoContainer({ extratos, setExtratos }: ExtratoConta
                                                 padding="11px"
                                                 color={palette.branco}
                                                 border="none"
+                                                title="Clique para editar esta transação"
                                             />
                                             <Botao
                                                 label={''}
@@ -105,6 +106,7 @@ export default function ExtratoContainer({ extratos, setExtratos }: ExtratoConta
                                                 padding="11px"
                                                 onClick={() => handleDelete(item.id)}
                                                 color={palette.branco}
+                                                title="Clique para excluir esta transação"
                                             />
                                         </div>
                                     </div>

@@ -131,11 +131,13 @@ export default function ModalEditarTransacao({
             label={"Editar"}
             onClick={handleSave}
             disabled={!tipoTransacao || !valor || valor <= 0 || !descricao}
+            title="Clique para salvar as alterações da transação"
             />
             <Botao 
             label={"Cancelar"}
             onClick={onClose}
             backgroundColor={palette.azul700}
+            title="Clique para descartar as alterações e fechar o modal"
             />
           </div>
         </form>
