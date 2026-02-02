@@ -1,51 +1,57 @@
 <h1 align="center">
-  <a href="https://github.com/FIAP-Grupo20/tech_challenge-fase1">
-    Tech Challenge - Fase 01: Gerenciador Financeiro
+  <a href="https://github.com/Excalibur757/Tech-Challenge-Fase-2">
+    Tech Challenge - Fase 02: Gerenciador Financeiro Incrementado
   </a>
 </h1>
 
-O objetivo é um front-end para uma aplicação de gerenciamento financeiro. A interface permite que os usuários gerenciem suas transações financeiras, utilizando **Next.js** e um **Design System** documentado.
+A proposta é desenvolver um pacote de melhorias do gerenciador financeiro do projeto passado. Incorporando melhorias de pesquisa, gráficos, paginação, validação e upload, utilizando **Next.js**, **Microfrontends** e **Docker**.
 
 <br />
 
 ## 📖 Índice
 
 * 🎯 Sobre o Projeto
-* ✨ Features (Requisitos)
+* ✨ Requisitos
 * 🛠️ Tecnologias Utilizadas
-* 🚀 Começando (Executando o Projeto)
-* 🎨 Design System
-* 🎥 Vídeo Demonstrativo
+* 🚀 Executando o Projeto
+* 🎥 Vídeo
 
 <br />
 
 ## 🎯 Sobre o Projeto
 
-Este projeto foca na construção de uma interface rica e funcional para um app financeiro. Embora um [link do Figma](https://www.figma.com/design/ns5TC3X5Xr8V7I3LYKg9KA/Projeto-Financeiro?node-id=80-199&p=f&t=Y821nsQ9qA67Fg4v-0) tenha sido fornecido como referência, o desenvolvimento priorizou a **consistência visual, boa usabilidade e acessibilidade**, não seguindo o layout de forma estrita. O back-end da aplicação é simulado, com dados mockados diretamente no front-end.
+Focado na construção de uma interface funcional para um app financeiro. Usamos de inspiração o [Figma](https://www.figma.com/design/ns5TC3X5Xr8V7I3LYKg9KA/Projeto-Financeiro?node-id=80-199&p=f&t=Y821nsQ9qA67Fg4v-0) para produzir este projeto. O back-end foi fornecido pela própria FIAP e alguns dados foram mockados diretamente no front-end.
 
 <br />
 
 ## ✨ Features (Requisitos)
 
-O projeto cumpre com os seguintes requisitos funcionais:
+O projeto segue os seguintes requisitos:
+
+- **Login:**
+  - Página simples para inserir as credenciais de acesso.
+  * Gera token de acesso.
 
 - **Home Page:**
-  * Container com boas-vindas ao usuário.
-  * Exibição do saldo da conta corrente e extrato das últimas transações.
-  * Seção para iniciar uma nova transação (seleção de tipo, valor e descrição).
+  * Gráficos.
+  * Análises financeiras.
+  * Seção adicionar uma nova transação.
  
  - **Listagem de Transações:**
-   - Um container que exibe a lista completa de transações realizadas.
-
-- **Gerenciamento de Transações:**
-  * É possível **visualizar detalhes**, **editar** e **deletar** cada transação.
+   - Um container que exibe as últimas transações realizadas.
 
 - **Adicionar Nova Transação:**
-    - Um container dedicado para adicionar uma nova transação.
-  * Formulário com campos para tipo de transação, valor, data e descrição.
+    - Um container para adicionar novas transações.
+  * Formulário com campos para tipo de transação, valor, descrição e upload de documento.
+  * Possui também validação e sugestões automáticas.
     
 - **Editar Transação:**
-  * Um modal para editar as informações de uma transação existente.
+  * Um modal para editar os dados de uma transação existente.
+
+- **Extrato:**
+    - Uma página para visualizar todo o extrato.
+  * Possui filtros para pesquisa avançada.
+  * Utiliza paginação.
 
 <br />
 
@@ -57,69 +63,69 @@ Este projeto foi construído utilizando as seguintes tecnologias obrigatórias e
 * [**React**](https://reactjs.org/)**:** Biblioteca principal para a construção da interface.
 * **CSS Modules:** Usado para estilos específicos de páginas ou componentes.
 * **Styled-Components:** Usado para criar componentes de UI reutilizáveis e "tokenizados", que formam o núcleo do nosso sistema.
-* **GitBook:** Ferramenta para documentar os componentes do Design System.
+* **Docker:** Utilizado para empacotar as aplicações e dependências em contêiners portáteis para rodar em qualquer lugar.
+* **Vercel:** Utilizado para rodar sua aplicação na web.
+* **Microfrontends:** Usado para separar as páginas de um site e torná-las independentes, permitindo atualização e desenvolvimento isolado.
 * **Bootstrap:** Utilizado para agilizar o desenvolvimento do layout macro e para classes utilitárias.
 
 <br />
 
-## 🚀 Começando (Executando o Projeto)
+## 🚀 Executando o Projeto
 
 ### Pré-requisitos
 
-* [Node.js](https://nodejs.org/) (versão 18.x ou superior)
-* [Yarn](https://yarnpkg.com/) ou [npm](https://www.npmjs.com/)
+* [docker](https://www.docker.com/products/docker-desktop/)
 
 ### Instalação
 
 1.  Clone o repositório:
 
     ```bash
-    git clone https://github.com/FIAP-Grupo20/tech_challenge-fase1.git
+    git clone https://github.com/Excalibur757/Tech-Challenge-Fase-2.git
     ```
 2.  Navegue até o diretório do projeto:
 
     ```bash
-    cd tech_challenge-fase1
-    ```
-3.  Instale as dependências:
-
-    ```bash
-    npm install
-    # ou
-    yarn install
+    cd Tech-Challenge-Fase-2
     ```
 
 ### Executando a aplicação
 
-1.  Inicie o servidor de desenvolvimento:
+1.  Inicie o docker pela primeira vez:
 
     ```bash
-    npm run dev
-    # ou
-    yarn dev
+    docker-compose up --build
     ```
-2. Abra [http://localhost:3000](http://localhost:3000) em seu navegador para ver a aplicação.
-
+2. Abra [http://localhost:3001](http://localhost:3001) em seu navegador para ver a aplicação.
+3. Caso você já tenha executado este projeto pela primeira vez, use:
+    ```bash
+    docker-compose up
+    ```
+4. Agora abra [http://localhost:3001](http://localhost:3001) em seu navegador para ver a aplicação.
 <br />
 
-## 🎨 Design System
+### Credenciais de login
 
-Conforme o requisito, foi criado um Design System para garantir consistência visual e reutilização de componentes.
+* Para ter o acesso, use as seguintes credenciais:
 
-A documentação completa, detalhando os **Design Tokens** (cores, tipografia, espaçamento) e os compoenentes, está disponível em nosso **GitBook**.
+  1. Email:
+    ```bash
+    aluno@teste.com
+    ```
+  2. Senha:
+    ```bash
+    123456
+    ```
 
-➡️ [Acesse a documentação do Design System aqui.](https://fiap-grupo-20.gitbook.io/tech-challenge-1-design-system/)
+## 🎥 Vídeo
 
-<br />
+Gravamos um vídeo para demonstrar todo o fluxo e as melhorias solicitadas.
 
-## 🎥 Vídeo Demonstrativo
-
-Um vídeo de até 5 minutos foi gravado para demonstrar todo o fluxo do front-end, incluindo navegação, listagem, adição, edição e exclusão de transações, conforme solicitado.
-
-➡️ [Assista ao vídeo demonstrativo aqui.](https://www.youtube.com/watch?v=7yawItuhJDM)
+➡️ [Assista ao vídeo via Drive](https://drive.google.com/file/d/1L3WHbnlwSeVGx3RJmoUgYABsTkOXb-tY/view?usp=sharing).
+➡️ [Assista ao vídeo via YouTube](https://youtu.be/xbebpXF6hzg).
 
 <br />
 
 ***
 
-Feito por **Isabelle D. R. Silva (RM367409), Kevin L. Santos (RM369050), Mariana Ayumi Tamay (RM367047) e Pedro Henrique Moura (RM367447).**
+Feito por **Kevin Santos (RM369050) e Pedro Moura (RM367447).**

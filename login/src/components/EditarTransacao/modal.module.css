@@ -1,0 +1,9 @@
+.modal{
+    width: 40vw
+}
+
+@media (max-width: 1000px) {
+    .modal{
+        width: 90vw
+    }
+}

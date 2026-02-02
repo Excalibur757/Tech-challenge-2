@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+
+  login:
+    build: ./login
+    container_name: login
+    ports:
+      - "3001:3000"
+    environment:
+      - PORT=3001
+    depends_on:
+      - backend
+
+  home:
+    build: ./home
+    container_name: home
+    ports:
+      - "3002:3000"
+    environment:
+      - PORT=3002
+    depends_on:
+      - backend
+
+  extrato:
+    build: ./extrato
+    container_name: extrato
+    ports:
+      - "3003:3000"
+    environment:
+      - PORT=3003
+    depends_on:
+      - backend

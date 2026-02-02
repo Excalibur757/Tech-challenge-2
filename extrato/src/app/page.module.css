@@ -1,0 +1,190 @@
+.containerTudo {
+  margin: 0 10vw;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 24px;
+  padding: 24px 0;
+}
+
+/* CONTEÚDO */
+.conteudo {
+  padding: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.titulo {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 24px;
+  color: #1a2b4c;
+}
+
+/* Barra de busca */
+.inputBusca {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #cdd4e0;
+  background-color: #CBCBCB;
+  margin-bottom: 16px;
+  font-size: 16px;
+  color: black;
+}
+
+/* Select filtro */
+.selectFiltro {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #cdd4e0;
+  margin-bottom: 24px;
+  font-size: 16px;
+  background: #CBCBCB;
+  color: black;
+}
+
+/* Lista de meses */
+.listaMeses {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.mesBloco {
+  background: white;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.mesTitulo {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: #2c3e50;
+}
+
+/* Item do extrato */
+.itemExtrato {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.itemExtrato:last-child {
+  border-bottom: none;
+}
+
+.descricao {
+  font-size: 16px;
+  font-weight: 500;
+  color: #0062c4;
+}
+
+.data {
+  font-size: 13px;
+  color: #7f8c8d;
+}
+
+.valor {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.positivo {
+  color: #27ae60;
+}
+
+.negativo {
+  color: #c0392b;
+}
+
+.filtrosLinha {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* ... mantenha todos os estilos anteriores ... */
+
+/* Contador de resultados */
+.contadorResultados {
+  margin: 20px 0;
+  padding: 12px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #0062c4;
+  font-size: 14px;
+  color: #555;
+}
+
+.contadorResultados p {
+  margin: 0;
+}
+
+/* Sem resultados */
+.semResultados {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  color: #666;
+  font-size: 16px;
+}
+
+/* Paginação */
+.paginacao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 40px;
+  padding: 20px 0;
+  border-top: 1px solid #e6e6e6;
+}
+
+.numerosPagina {
+  display: flex;
+  gap: 4px;
+}
+
+.botaoPagina {
+  padding: 8px 16px;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  transition: all 0.2s ease;
+  min-width: 40px;
+  text-align: center;
+}
+
+.botaoPagina:hover:not(.desabilitado):not(.paginaAtual) {
+  background-color: #e9ecef;
+  border-color: #adb5bd;
+}
+
+.botaoPagina.paginaAtual {
+  background-color: #0062c4;
+  color: white;
+  border-color: #0062c4;
+  font-weight: bold;
+}
+
+.botaoPagina.desabilitado {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #f8f9fa;
+}
+
+/* 📱 MOBILE */
+@media (max-width: 1024px) {
+  .containerTudo {
+    margin: 0;
+    grid-template-columns: 1fr;
+  }
+}
